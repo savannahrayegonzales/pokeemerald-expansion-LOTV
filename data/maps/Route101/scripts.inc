@@ -21,8 +21,8 @@ Route101_EventScript_StartBirchRescue::
 	playbgm MUS_HELP, TRUE
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
-	setobjectxy LOCALID_ROUTE101_BIRCH, 0, 15
-	setobjectxy LOCALID_ROUTE101_ZIGZAGOON, 0, 16
+	setobjectxy LOCALID_ROUTE101_BIRCH, 6, 8
+	setobjectxy LOCALID_ROUTE101_ZIGZAGOON, 7, 8
 	applymovement LOCALID_PLAYER, Route101_Movement_EnterScene
 	applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchRunAway1
 	applymovement LOCALID_ROUTE101_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
@@ -69,15 +69,15 @@ Route101_EventScript_PreventExitNorth::
 	end
 
 Route101_Movement_PreventExitSouth:
-	walk_up
-	step_end
-
-Route101_Movement_PreventExitWest:
 	walk_right
 	step_end
 
+Route101_Movement_PreventExitWest:
+	walk_left
+	step_end
+
 Route101_Movement_PreventExitNorth:
-	walk_down
+	walk_up
 	step_end
 
 Route101_Movement_ZigzagoonChaseInCircles:
@@ -114,11 +114,8 @@ Route101_Movement_ZigzagoonChaseInCircles:
 	step_end
 
 Route101_Movement_ZigzagoonChase1:
+	walk_fast_left
 	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
 	walk_fast_up
 	step_end
 
@@ -133,11 +130,9 @@ Route101_Movement_ZigzagoonFaceBirch:
 	step_end
 
 Route101_Movement_EnterScene:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_in_place_faster_left
+	walk_fast_right
+	walk_fast_right
+	walk_in_place_faster_right
 	step_end
 
 Route101_Movement_BirchRunInCircles:
@@ -174,10 +169,7 @@ Route101_Movement_BirchRunInCircles:
 	step_end
 
 Route101_Movement_BirchRunAway1:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
+	walk_fast_up
 	walk_fast_up
 	walk_fast_up
 	step_end
@@ -222,8 +214,8 @@ Route101_EventScript_BirchsBag::
 	setflag FLAG_RESCUED_BIRCH
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ROUTE101_ZIGZAGOON
-	setobjectxy LOCALID_PLAYER, 6, 13
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	setobjectxy LOCALID_PLAYER, 4, 5
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	special ChooseStarter
 	applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
@@ -253,7 +245,7 @@ Route101_EventScript_HideBrendanInBedroom::
 	return
 
 Route101_Movement_BirchApproachPlayer:
-	walk_right
+	walk_left
 	step_end
 
 Route101_Text_HelpMe:
@@ -270,7 +262,7 @@ Route101_Text_DontLeaveMe:
 	.string "Don't leave me like this!$"
 
 Route101_Text_YouSavedMe:
-	.string "PROF. BIRCH: Whew…\p"
+	.string "RABBI SETH: Whew…\p"
 	.string "I was in the tall grass studying wild\n"
 	.string "POKéMON when I was jumped.\p"
 	.string "You saved me.\n"
@@ -283,8 +275,8 @@ Route101_Text_YouSavedMe:
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If POKéMON get tired, take them to\n"
 	.string "a POKéMON CENTER.\p"
-	.string "There's a POKéMON CENTER in OLDALE\n"
-	.string "TOWN right close by.$"
+	.string "There's a POKéMON CENTER in LEBANON\n"
+	.string "right close by.$"
 
 Route101_Text_WildPokemonInTallGrass:
 	.string "Wild POKéMON will jump out at you in\n"
@@ -293,6 +285,6 @@ Route101_Text_WildPokemonInTallGrass:
 	.string "to go into the tall grass and search.$"
 
 Route101_Text_RouteSign:
-	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "ROUTE 120\n"
+	.string "{DOWN_ARROW} LEBANON$"
 

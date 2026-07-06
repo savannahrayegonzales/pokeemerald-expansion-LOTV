@@ -3,7 +3,6 @@
   "name": "Route101",
   "layout": "LAYOUT_ROUTE101",
   "music": "MUS_ROUTE101",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_101",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -16,13 +15,13 @@
   "connections": [
     {
       "map": "MAP_OLDALE_TOWN",
-      "offset": 0,
-      "direction": "up"
+      "offset": 6,
+      "direction": "right"
     },
     {
       "map": "MAP_LITTLEROOT_TOWN",
-      "offset": 0,
-      "direction": "down"
+      "offset": -2,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -42,8 +41,8 @@
     {
       "local_id": "LOCALID_ROUTE101_BIRCH",
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
-      "x": 9,
-      "y": 13,
+      "x": 6,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT",
       "movement_range_x": 0,
@@ -55,8 +54,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
-      "x": 7,
-      "y": 14,
+      "x": 4,
+      "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -69,8 +68,8 @@
     {
       "local_id": "LOCALID_ROUTE101_ZIGZAGOON",
       "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_1",
-      "x": 10,
-      "y": 13,
+      "x": 7,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_LEFT",
       "movement_range_x": 0,
@@ -82,8 +81,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
-      "x": 5,
-      "y": 11,
+      "x": 6,
+      "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -95,8 +94,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-      "x": 2,
-      "y": 13,
+      "x": 7,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -111,8 +110,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 10,
-      "y": 19,
+      "x": 0,
+      "y": 4,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "1",
@@ -120,8 +119,8 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 19,
+      "x": 0,
+      "y": 5,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "1",
@@ -129,8 +128,8 @@
     },
     {
       "type": "trigger",
-      "x": 10,
-      "y": 18,
+      "x": 1,
+      "y": 4,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -138,8 +137,8 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 18,
+      "x": 1,
+      "y": 5,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -147,8 +146,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 16,
+      "x": 5,
+      "y": 5,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -156,8 +155,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 15,
+      "x": 5,
+      "y": 4,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -165,8 +164,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 17,
+      "x": 5,
+      "y": 6,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -174,8 +173,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 18,
+      "x": 5,
+      "y": 2,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -183,8 +182,8 @@
     },
     {
       "type": "trigger",
-      "x": 7,
-      "y": 13,
+      "x": 4,
+      "y": 7,
       "elevation": 3,
       "var": "VAR_ROUTE101_STATE",
       "var_value": "2",
@@ -194,11 +193,12 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 5,
-      "y": 9,
+      "x": 7,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route101_EventScript_RouteSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

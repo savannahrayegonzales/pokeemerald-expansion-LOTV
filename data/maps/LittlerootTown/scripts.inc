@@ -71,17 +71,17 @@ LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent::
 	return
 
 LittlerootTown_EventScript_MoveMomToMaysDoor::
-	setobjectxyperm LOCALID_LITTLEROOT_MOM, 14, 8
+	setobjectxyperm LOCALID_LITTLEROOT_MOM, 18, 14
 	return
 
 LittlerootTown_EventScript_SetTwinPos::
 	goto_if_eq VAR_LITTLEROOT_TOWN_STATE, 0, LittlerootTown_EventScript_SetTwinGuardingRoutePos
-	setobjectxyperm LOCALID_LITTLEROOT_TWIN, 10, 1
-	setobjectmovementtype LOCALID_LITTLEROOT_TWIN, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_LITTLEROOT_TWIN, 24, 6
+	setobjectmovementtype LOCALID_LITTLEROOT_TWIN, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
 LittlerootTown_EventScript_SetTwinGuardingRoutePos::
-	setobjectxyperm LOCALID_LITTLEROOT_TWIN, 7, 2
+	setobjectxyperm LOCALID_LITTLEROOT_TWIN, 22, 5
 	setobjectmovementtype LOCALID_LITTLEROOT_TWIN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -94,11 +94,11 @@ LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
-	setobjectxyperm LOCALID_LITTLEROOT_MOM, 5, 9
+	setobjectxyperm LOCALID_LITTLEROOT_MOM, 5, 13
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorFemale::
-	setobjectxyperm LOCALID_LITTLEROOT_MOM, 14, 9
+	setobjectxyperm LOCALID_LITTLEROOT_MOM, 18, 13
 	return
 
 LittlerootTown_OnFrame:
@@ -110,7 +110,7 @@ LittlerootTown_OnFrame:
 LittlerootTown_EventScript_StepOffTruckMale::
 	lockall
 	setvar VAR_0x8004, 5
-	setvar VAR_0x8005, 8
+	setvar VAR_0x8005, 13
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 8, 8
@@ -120,8 +120,8 @@ LittlerootTown_EventScript_StepOffTruckMale::
 
 LittlerootTown_EventScript_StepOffTruckFemale::
 	lockall
-	setvar VAR_0x8004, 14
-	setvar VAR_0x8005, 8
+	setvar VAR_0x8004, 18
+	setvar VAR_0x8005, 13
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F, 2, 8
@@ -169,12 +169,13 @@ LittlerootTown_Movement_MomExitHouse:
 
 LittlerootTown_Movement_MomApproachPlayerAtTruck:
 	walk_down
-	walk_in_place_faster_left
+	walk_in_place_faster_down
 	step_end
 
 LittlerootTown_Movement_MomApproachDoor:
 	delay_16
 	delay_8
+	walk_up
 	walk_up
 	step_end
 
@@ -186,17 +187,17 @@ LittlerootTown_Movement_MomEnterHouse:
 LittlerootTown_Movement_PlayerApproachDoor:
 	delay_16
 	delay_8
-	walk_right
-	walk_in_place_faster_up
+	walk_up
+	walk_up
 	step_end
 
 LittlerootTown_Movement_PlayerEnterHouse:
-	walk_up
 	walk_up
 	step_end
 
 LittlerootTown_Movement_PlayerStepOffTruck:
 	jump_right
+	walk_in_place_faster_up
 	delay_16
 	delay_16
 	delay_16
@@ -306,35 +307,31 @@ LittlerootTown_Movement_TwinApproachPlayerLeft:
 	disable_jump_landing_ground_effect
 	jump_in_place_right
 	delay_8
-	walk_fast_right
+	walk_fast_down
+	walk_fast_down
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_fast_up
-	walk_fast_up
-	walk_fast_left
-	face_down
+	face_left
 	step_end
 
 LittlerootTown_Movement_TwinPushPlayerFromRoute:
-	walk_down
+	walk_left
 	step_end
 
 LittlerootTown_Movement_TwinReturnLeft:
-	walk_right
-	walk_down
 	walk_down
 	walk_left
 	walk_left
-	walk_left
-	walk_left
+	walk_up
 	walk_up
 	walk_in_place_faster_down
 	step_end
 
 LittlerootTown_Movement_PushPlayerBackFromRoute:
 	lock_facing_direction
-	walk_down
+	walk_left
 	unlock_facing_direction
 	step_end
 
@@ -354,29 +351,27 @@ LittlerootTown_Movement_TwinApproachPlayerRight:
 	disable_jump_landing_ground_effect
 	jump_in_place_right
 	delay_8
+	walk_fast_down
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	face_down
+	walk_fast_down
+	face_left
 	step_end
 
 LittlerootTown_Movement_TwinReturnRight:
-	walk_left
-	walk_down
-	walk_left
+	walk_up
 	walk_left
 	walk_left
+	walk_up
 	walk_in_place_faster_down
 	step_end
 
 LittlerootTown_EventScript_GoSaveBirchTrigger::
 	lockall
-	applymovement LOCALID_LITTLEROOT_TWIN, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_LITTLEROOT_TWIN, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	special GetPlayerBigGuyGirlString
 	msgbox LittlerootTown_Text_CanYouGoSeeWhatsHappening, MSGBOX_DEFAULT
@@ -908,7 +903,7 @@ LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "MOM: {PLAYER}, we're here, honey!\p"
 	.string "It must be tiring riding with our things\n"
 	.string "in the moving truck.\p"
-	.string "Well, this is LITTLEROOT TOWN.\p"
+	.string "Well, this is HANOVER.\p"
 	.string "How do you like it?\n"
 	.string "This is our new home!\p"
 	.string "It has a quaint feel, but it seems to be\n"
@@ -921,10 +916,9 @@ LittlerootTown_Text_WaitPlayer:
 
 LittlerootTown_Text_WearTheseRunningShoes:
 	.string "MOM: {PLAYER}! {PLAYER}! Did you\n"
-	.string "introduce yourself to PROF. BIRCH?\p"
+	.string "introduce yourself to RABBI SETH?\p"
 	.string "Oh! What an adorable POKéMON!\n"
-	.string "You got it from PROF. BIRCH. How nice!\p"
-	.string "You're your father's child, all right.\n"
+	.string "You got it from RABBI SETH? How nice!\p"
 	.string "You look good together with POKéMON!\p"
 	.string "Here, honey! If you're going out on an\n"
 	.string "adventure, wear these RUNNING SHOES.\p"
@@ -958,23 +952,23 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "The power of science is staggering!$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "PROF. BIRCH spends days in his LAB\n"
-	.string "studying, then he'll suddenly go out in\l"
+	.string "RABBI SETH spends days in his OFFICE\n"
+	.string "working, then he'll suddenly go out in\l"
 	.string "the wild to do more research…\p"
-	.string "When does PROF. BIRCH spend time\n"
+	.string "When does RABBI SETH spend time\n"
 	.string "at home?$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
-	.string "Um, um, um!\p"
+	.string "ZOEY: Um, um, um!\p"
 	.string "If you go outside and go in the grass,\n"
 	.string "wild POKéMON will jump out!$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
-	.string "It's dangerous if you don't have\n"
+	.string "ZOEY: It's dangerous if you don't have\n"
 	.string "your own POKéMON.$"
 
 LittlerootTown_Text_CanYouGoSeeWhatsHappening:
-	.string "Um, hi!\p"
+	.string "ZOEY: Um, hi!\p"
 	.string "There are scary POKéMON outside!\n"
 	.string "I can hear their cries!\p"
 	.string "I want to go see what's going on,\n"
@@ -983,28 +977,28 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "for me?$"
 
 LittlerootTown_Text_YouSavedBirch:
-	.string "You saved PROF. BIRCH!\n"
+	.string "ZOEY: You saved PROF. BIRCH!\n"
 	.string "I'm so glad!$"
 
 LittlerootTown_Text_GoodLuckCatchingPokemon:
-	.string "Are you going to catch POKéMON?\n"
+	.string "ZOEY: Are you going to catch POKéMON?\n"
 	.string "Good luck!$"
 
 LittlerootTown_Text_TownSign:
-	.string "LITTLEROOT TOWN\n"
-	.string "“A town that can't be shaded any hue.”$"
+	.string "HANOVER, NH\n"
+	.string "“Where it all began.”$"
 
 LittlerootTown_Text_ProfBirchsLab:
-	.string "PROF. BIRCH'S POKéMON LAB$"
+	.string "RABBI SETH'S OFFICE$"
 
 LittlerootTown_Text_PlayersHouse:
 	.string "{PLAYER}'s HOUSE$"
 
 LittlerootTown_Text_ProfBirchsHouse:
-	.string "PROF. BIRCH'S HOUSE$"
+	.string "RABBI SETH'S HOUSE$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
-	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"
+	.string "RABBI SETH: Well, well, {PLAYER}{KUN}!\n"
 	.string "That was good work out there!\p"
 	.string "I knew there was something special\n"
 	.string "about you when I first saw you,\l"
@@ -1012,5 +1006,5 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "Oh, yes. Do you still have the POKéDEX\n"
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
-	.string "Let's go to my LAB.$"
+	.string "Let's go to my OFFICE.$"
 
