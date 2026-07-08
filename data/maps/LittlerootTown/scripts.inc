@@ -33,7 +33,22 @@ LittlerootTown_MapScripts::
 	@ 3: Met Rival
 	@ 4: Received Pokedex
 
+	@ NEW State descriptions for VAR_LITTLEROOT_INTRO_STATE
+	@ 1: In home male
+	@ 2: In home female
+	@ 3: NONE
+	@ 4: NONE
+	@ 5: NONE
+	@ 6: Set clock
+	@ 7: NONE
 
+	@ NEW State descriptions for VAR_LITTLEROOT_HOUSES_STATE_MAY
+	@                   	 and VAR_LITTLEROOT_HOUSES_STATE_BRENDAN
+	@ 1: In home (and is corresponding gender)
+	@ 2: Met Rival's Mom (and is corresponding gender)
+	@ 3: Entered Hall of Fame
+	@ 4: Completed Lati TV / SS Ticket event
+	@ 5: Exited house after above event
 
 
 LittlerootTown_OnTransition:
