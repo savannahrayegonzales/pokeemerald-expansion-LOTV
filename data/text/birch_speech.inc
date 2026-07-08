@@ -30,8 +30,8 @@ gText_Birch_AndYouAre::
 	.string "And you are?$"
 
 gText_Birch_BoyOrGirl::
-	.string "Are you LILY?\n"
-	.string "Or are you SAVANNAH?$"
+	.string "Are you Jewish?\n"
+	.string "Or a friend of the tribe?$"
 
 gText_Birch_WhatsYourName::
 	.string "All right.\n"

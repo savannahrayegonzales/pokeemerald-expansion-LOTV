@@ -16,12 +16,12 @@ OldaleTown_EventScript_SetOldaleState::
 	return
 
 OldaleTown_EventScript_BlockWestEntrance::
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 1, 11
-	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 12, 24
+	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
-	setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 13, 14
+	setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 7, 9
 	setobjectmovementtype LOCALID_OLDALE_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -46,6 +46,7 @@ OldaleTown_EventScript_MartEmployee::
 	case DIR_SOUTH, OldaleTown_EventScript_GoToMartSouth
 	case DIR_NORTH, OldaleTown_EventScript_GoToMartNorth
 	case DIR_EAST, OldaleTown_EventScript_GoToMartEast
+	case DIR_WEST, OldaleTown_EventScript_GoToMartWest
 	end
 
 OldaleTown_EventScript_GoToMartSouth::
@@ -65,6 +66,13 @@ OldaleTown_EventScript_GoToMartNorth::
 OldaleTown_EventScript_GoToMartEast::
 	applymovement LOCALID_PLAYER, OldaleTown_Movement_PlayerEast
 	applymovement LOCALID_OLDALE_MART_EMPLOYEE, OldaleTown_Movement_EmployeeEast
+	waitmovement 0
+	goto OldaleTown_EventScript_ExplainPokemonMart
+	end
+
+OldaleTown_EventScript_GoToMartWest::
+	applymovement LOCALID_PLAYER, OldaleTown_Movement_PlayerWest
+	applymovement LOCALID_OLDALE_MART_EMPLOYEE, OldaleTown_Movement_EmployeeWest
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
@@ -90,39 +98,64 @@ OldaleTown_EventScript_BagIsFull::
 	release
 	end
 
+OldaleTown_Movement_EmployeeWest:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_in_place_faster_right
+	step_end
+
 OldaleTown_Movement_EmployeeEast:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_in_place_faster_right
 	step_end
 
 OldaleTown_Movement_EmployeeSouth:
 	walk_left
-	walk_up
-	walk_up
+	walk_down
+	walk_down
 	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_in_place_faster_right
 	step_end
 
 OldaleTown_Movement_EmployeeNorth:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_faster_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_in_place_faster_right
 	step_end
 
 OldaleTown_Movement_Unknown1:
@@ -141,36 +174,74 @@ OldaleTown_Movement_Unknown1:
 	walk_in_place_faster_down
 	step_end
 
+OldaleTown_Movement_PlayerWest:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
 OldaleTown_Movement_PlayerEast:
 	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
+
 
 OldaleTown_Movement_PlayerSouth:
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 OldaleTown_Movement_PlayerNorth:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 OldaleTown_Movement_Unknown2:
@@ -323,20 +394,21 @@ OldaleTown_Movement_WatchRivalExit:
 
 OldaleTown_Movement_PlayerStepBack:
 	delay_8
-	walk_right
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
 	step_end
 
 OldaleTown_Movement_BackUp:
-	walk_fast_up
-	walk_in_place_faster_left
+	jump_in_place_right
+	walk_in_place_faster_right
 	lock_facing_direction
-	walk_right
+	walk_up
 	unlock_facing_direction
 	step_end
 
 OldaleTown_Movement_ReturnToOriginalPosition:
 	walk_down
-	walk_left
 	step_end
 
 OldaleTown_Text_SavingMyProgress:
@@ -382,16 +454,16 @@ OldaleTown_Text_FinishedSketchingFootprints:
 	.string "own footprints…$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "MAY: {PLAYER}{KUN}!\n"
+	.string "{RIVAL}: {PLAYER}{KUN}!\n"
 	.string "Over here!\l"
 	.string "Let's hurry home!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
-	.string "BRENDAN: I'm heading back to my dad's\n"
-	.string "LAB now.\l"
+	.string "{RIVAL}: I'm heading back to RABBI\n"
+	.string "SETH'S OFFICE now.\l"
 	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_TownSign:
-	.string "OLDALE TOWN\n"
+	.string "LEBANON, NH\n"
 	.string "“Where things start off scarce.”$"
 
