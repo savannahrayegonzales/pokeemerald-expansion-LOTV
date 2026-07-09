@@ -64,10 +64,3 @@ PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
 EventScript_RunningShoesManual::
 	msgbox PlayersHouse_1F_Text_RunningShoesManual, MSGBOX_SIGN
 	end
-
-RivalsHouse_2F_EventScript_Brendan::
-	end
-
-RivalsHouse_2F_EventScript_May::
-	end
-
