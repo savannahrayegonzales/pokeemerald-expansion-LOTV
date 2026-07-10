@@ -35,6 +35,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan::
 
 LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan::
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 2
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 	return
 
 LittlerootTown_BrendansHouse_2F_OnWarp:
@@ -48,35 +49,110 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckInitDecor::
 
 LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::
 	lockall
-	goto_if_eq VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan
+	@goto_if_eq VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan
 	msgbox RivalsHouse_2F_Text_ItsRivalsPokeBall, MSGBOX_DEFAULT
 	releaseall
 	end
 
-LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan::
+LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanTop::
 	delay 10
 	addobject LOCALID_RIVALS_HOUSE_2F_RIVAL
-	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters
-	waitmovement 0
-	playse SE_PIN
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	delay 10
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	call_if_eq VAR_FACING, DIR_NORTH, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth
-	call_if_eq VAR_FACING, DIR_SOUTH, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth
-	call_if_eq VAR_FACING, DIR_WEST, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanWest
-	call_if_eq VAR_FACING, DIR_EAST, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanEast
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanMeetTop
+	waitmovement 0
+	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanTop
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanLeaveTop
+	waitmovement 0
+	removeobject LOCALID_RIVALS_HOUSE_2F_RIVAL
+	playse SE_PIN
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall
 	end
+
+LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanBottom::
+	delay 10
+	addobject LOCALID_RIVALS_HOUSE_2F_RIVAL
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 10
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanMeetBottom
+	waitmovement 0
+	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanBottom
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanLeaveBottom
+	waitmovement 0
+	removeobject LOCALID_RIVALS_HOUSE_2F_RIVAL
+	playse SE_PIN
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+	setvar VAR_LITTLEROOT_TOWN_STATE, 1
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	end
+
+LittlerootTown_BrendansHouse_2F_Movement_BrendanMeetTop:
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanTop:
+	walk_in_place_faster_down
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_BrendansHouse_2F_Movement_BrendanLeaveTop:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	step_end
+
+LittlerootTown_BrendansHouse_2F_Movement_BrendanMeetBottom:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanBottom:
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_BrendansHouse_2F_Movement_BrendanLeaveBottom:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth::
 	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerNorth

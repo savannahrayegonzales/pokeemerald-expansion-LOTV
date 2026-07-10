@@ -34,6 +34,7 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay::
 
 LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay::
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 2
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	return
 
 LittlerootTown_MaysHouse_2F_OnWarp:
@@ -47,46 +48,118 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor::
 
 LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
 	lockall
-	goto_if_eq VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_MeetMay
+	@goto_if_eq VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_MeetMay
 	msgbox RivalsHouse_2F_Text_ItsRivalsPokeBall, MSGBOX_DEFAULT
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMay::
+LittlerootTown_MaysHouse_2F_EventScript_MeetMayTop::
 	delay 10
 	addobject LOCALID_RIVALS_HOUSE_2F_RIVAL
-	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayEnters
-	waitmovement 0
-	playse SE_PIN
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	delay 10
 	playbgm MUS_ENCOUNTER_MAY, TRUE
-	call_if_eq VAR_FACING, DIR_NORTH, LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth
-	call_if_eq VAR_FACING, DIR_SOUTH, LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth
-	call_if_eq VAR_FACING, DIR_WEST, LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest
-	call_if_eq VAR_FACING, DIR_EAST, LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayMeetTop
+	waitmovement 0
+	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayTop
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayLeaveTop
+	waitmovement 0
+	playse SE_PIN
+	removeobject LOCALID_RIVALS_HOUSE_2F_RIVAL
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth::
-	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerNorth
+LittlerootTown_MaysHouse_2F_EventScript_MeetMayBottom::
+	delay 10
+	addobject LOCALID_RIVALS_HOUSE_2F_RIVAL
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	delay 10
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayMeetBottom
 	waitmovement 0
 	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth
-	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth
+	applymovement LOCALID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayBottom
+	applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayLeaveBottom
 	waitmovement 0
+	playse SE_PIN
+	removeobject LOCALID_RIVALS_HOUSE_2F_RIVAL
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	setvar VAR_LITTLEROOT_TOWN_STATE, 1
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	end
+
+LittlerootTown_MaysHouse_2F_Movement_MayMeetTop:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayTop:
+	walk_in_place_faster_down
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_MayLeaveTop:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_MayMeetBottom:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayBottom:
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_MayLeaveBottom:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	step_end
+
+LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth::
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth::
