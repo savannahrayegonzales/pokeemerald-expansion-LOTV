@@ -467,3 +467,13 @@ RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
 	.string "Hey, {PLAYER}, if I see you while I'm out\n"
 	.string "catching POKéMON, I can pitch you a\l"
 	.string "battle if you'd like.$"
+
+
+MaysHouse2F_EventScript_ItsAGameCube::
+	msgbox MaysHouse2F_Text_ItsAGameCube, MSGBOX_SIGN
+	end
+
+MaysHouse2F_Text_ItsAGameCube:
+	.string "It's a Nintendo GameCube...\p"
+	.string "There's a Sonic Adventure 2 Battle\n"
+	.string "disc inside!$"

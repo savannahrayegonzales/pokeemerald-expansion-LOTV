@@ -395,20 +395,20 @@ OldaleTown_Movement_WatchRivalExit:
 OldaleTown_Movement_PlayerStepBack:
 	delay_8
 	lock_facing_direction
-	walk_up
+	walk_left
 	unlock_facing_direction
 	step_end
 
 OldaleTown_Movement_BackUp:
-	jump_in_place_right
-	walk_in_place_faster_right
+	jump_in_place_down
+	@walk_in_place_faster_right
 	lock_facing_direction
-	walk_up
+	walk_left
 	unlock_facing_direction
 	step_end
 
 OldaleTown_Movement_ReturnToOriginalPosition:
-	walk_down
+	walk_right
 	step_end
 
 OldaleTown_Text_SavingMyProgress:
@@ -466,4 +466,15 @@ OldaleTown_Text_BrendanLetsGoBack:
 OldaleTown_Text_TownSign:
 	.string "LEBANON, NH\n"
 	.string "“Where things start off scarce.”$"
+
+
+OldaleTown_EventScript_GymSign::
+	msgbox OldaleTown_Text_GymSign, MSGBOX_SIGN
+	end
+
+OldaleTown_Text_GymSign:
+	.string "LEBANON, NH POKéMON GYM\n"
+	.string "LEADER: TERESA CARPENTER\l"
+	.string "“A woman in pursuit of power!”$"
+
 

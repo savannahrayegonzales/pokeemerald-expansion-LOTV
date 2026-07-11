@@ -158,8 +158,8 @@
     {
       "id": "LAYOUT_VERDANTURF_TOWN",
       "name": "VerdanturfTown_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 22,
+      "height": 22,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/VerdanturfTown/border.bin",
@@ -191,10 +191,10 @@
     {
       "id": "LAYOUT_ROUTE102",
       "name": "Route102_Layout",
-      "width": 50,
+      "width": 54,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/Route102/border.bin",
       "blockdata_filepath": "data/layouts/Route102/map.bin",
       "layout_version": "emerald"
@@ -202,8 +202,8 @@
     {
       "id": "LAYOUT_ROUTE103",
       "name": "Route103_Layout",
-      "width": 80,
-      "height": 22,
+      "width": 24,
+      "height": 38,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route103/border.bin",
@@ -213,7 +213,7 @@
     {
       "id": "LAYOUT_ROUTE104",
       "name": "Route104_Layout",
-      "width": 40,
+      "width": 44,
       "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",

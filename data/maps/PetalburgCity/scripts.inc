@@ -731,7 +731,7 @@ PetalburgCity_Text_FullPartyExplanation:
 	.string "BOX over a PC connection.$"
 
 PetalburgCity_Text_GymSign:
-	.string "DURHAM NH POKéMON GYM\n"
+	.string "DURHAM, NH POKéMON GYM\n"
 	.string "LEADER: SAM COHEN\l"
 	.string "“A woman in pursuit of power!”$"
 

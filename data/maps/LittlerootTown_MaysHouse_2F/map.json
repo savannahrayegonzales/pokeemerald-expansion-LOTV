@@ -259,7 +259,7 @@
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "PlayersHouse_2F_EventScript_GameCube"
+      "script": "MaysHouse2F_EventScript_ItsAGameCube"
     },
     {
       "type": "sign",

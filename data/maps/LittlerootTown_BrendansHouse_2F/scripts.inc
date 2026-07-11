@@ -345,6 +345,10 @@ PlayersHouse_2F_EventScript_GameCube::
 	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
 	end
 
+BrendansHouse2F_EventScript_ItsAGameCube::
+	msgbox BrendansHouse2F_Text_ItsAGameCube, MSGBOX_SIGN
+	end
+
 PlayersHouse_2F_Text_ClockIsStopped:
 	.string "The clock is stopped…\p"
 	.string "Better set it and start it!$"
@@ -375,3 +379,8 @@ PlayersHouse_2F_Text_ItsAGameCube:
 	.string "It's a Nintendo GameCube.\p"
 	.string "A Game Boy Advance is connected to\n"
 	.string "serve as the Controller.$"
+
+BrendansHouse2F_Text_ItsAGameCube:
+	.string "It's a Nintendo GameCube...\p"
+	.string "There's a Shadow the Hedgehog disc\n"
+	.string "inside!$"
